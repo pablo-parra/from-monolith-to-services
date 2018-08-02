@@ -19,7 +19,7 @@ C:\...> docker start ecommerce_db
 ### Creation of the db container with Docker (first time)
 C:\...\_db\docker-postgreSQL-catalog> docker build -t catalog_db_img:0.0.1 .
 
-C:\...> docker run -d --name catalog_db -p 7654:7654 catalog_db_img:0.0.1
+C:\...> docker run -d --name catalog_db -p 5433:5432 catalog_db_img:0.0.1
 
 ### Start the db container (rest of the times)
 
@@ -30,7 +30,7 @@ C:\...> docker start catalog_db
 ### Creation of the db container with Docker (first time)
 C:\...\_db\docker-postgreSQL-cart> docker build -t cart_db_img:0.0.1 .
 
-C:\...> docker run -d --name cart_db -p 6543:6543 cart_db_img:0.0.1
+C:\...> docker run -d --name cart_db -p 5434:5432 cart_db_img:0.0.1
 
 ### Start the db container (rest of the times)
 
