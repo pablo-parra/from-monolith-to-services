@@ -42,7 +42,7 @@ Second instance:
 #### Apache server Load Balancer config
 For the example I have setted two instances of the cart service, that are configured in the Apache server as follows
 
-``
+```xml
 <Proxy "balancer://cart_cluster">
 	BalancerMember "http://localhost:9004/cart/api/v1"
 	BalancerMember "http://localhost:9005/cart/api/v1"
@@ -53,7 +53,7 @@ ProxyPassReverse "/ecommerce/cart" "balancer://cart_cluster"
 
 ProxyPass /ecommerce/catalog http://localhost:9003/catalog/api/v1/
 ProxyPassReverse /ecommerce/catalog http://localhost:9003/catalog/api/v1/
-``
+```
 
 ### Apache available services
 Assuming that our Apache instance runs in the port 8888 the following services would be available through the Load Balancer / Reverse Proxy:
@@ -75,7 +75,7 @@ The operations related to the cart service will be balanced by Apache between th
 
 #### Start the db container (rest of the times)
 
-C:\...> docker start ecommerce_db
+`C:\...> docker start ecommerce_db`
 
 ### Catalog db (PostgreSQL)
 
