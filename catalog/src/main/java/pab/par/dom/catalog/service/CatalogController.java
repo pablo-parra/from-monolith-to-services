@@ -24,7 +24,7 @@ public class CatalogController {
   /**
    * @return the list of all articles of the catalog
    */
-  @RequestMapping(value = "/getCatalog", method = RequestMethod.GET)
+  @RequestMapping(value = "/get", method = RequestMethod.GET)
   public @ResponseBody ResponseEntity<?> getDrivers() {
 
     return new ResponseEntity<>(this.catalogmanagement.getCatalog(), HttpStatus.OK);

@@ -32,8 +32,8 @@ public class EcommerceController {
   /**
    * @return the list of all articles of the catalog
    */
-  @RequestMapping(value = "/getCatalog", method = RequestMethod.GET)
-  public @ResponseBody ResponseEntity<?> getDrivers() {
+  @RequestMapping(value = "/catalog/get", method = RequestMethod.GET)
+  public @ResponseBody ResponseEntity<?> getCatalog() {
 
     return new ResponseEntity<>(this.catalogmanagement.getCatalog(), HttpStatus.OK);
   }
@@ -43,7 +43,7 @@ public class EcommerceController {
    *
    * @return the list of all articles of the catalog
    */
-  @RequestMapping(value = "/buy", method = RequestMethod.POST)
+  @RequestMapping(value = "/cart/buy", method = RequestMethod.POST)
   public @ResponseBody ResponseEntity<?> buy(@RequestBody List<PurchaseDto> purchases) {
 
     return new ResponseEntity<>(this.cartmanagement.buy(purchases), HttpStatus.OK);
@@ -52,7 +52,7 @@ public class EcommerceController {
   /**
    * @return the list of all articles of the catalog
    */
-  @RequestMapping(value = "/getPurchases", method = RequestMethod.GET)
+  @RequestMapping(value = "/cart/getPurchases", method = RequestMethod.GET)
   public @ResponseBody ResponseEntity<?> getPurchases() {
 
     return new ResponseEntity<>(this.cartmanagement.getPurchases(), HttpStatus.OK);
