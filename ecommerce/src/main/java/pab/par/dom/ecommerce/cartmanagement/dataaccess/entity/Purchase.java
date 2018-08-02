@@ -1,10 +1,13 @@
 package pab.par.dom.ecommerce.cartmanagement.dataaccess.entity;
 
-import java.sql.Date;
+import java.sql.Timestamp;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 /**
@@ -15,7 +18,11 @@ import javax.persistence.Table;
 @Table(name = "Purchase")
 public class Purchase {
 
+  private static final String SEQ_PURCHASE = "SEQ_PURCHASE";
+
   @Id
+  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = SEQ_PURCHASE)
+  @SequenceGenerator(name = SEQ_PURCHASE, sequenceName = "public.SEQ_PURCHASE", allocationSize = 1, initialValue = 1)
   private Long id;
 
   @Column(name = "article_id")
@@ -24,7 +31,7 @@ public class Purchase {
   private int amount;
 
   @Column(name = "date_of_purchase")
-  private Date dateOfPurchase;
+  private Timestamp dateOfPurchase;
 
   @Column(name = "user_name")
   private String userName;
@@ -80,7 +87,7 @@ public class Purchase {
   /**
    * @return dateOfPurchase
    */
-  public Date getDateOfPurchase() {
+  public Timestamp getDateOfPurchase() {
 
     return this.dateOfPurchase;
   }
@@ -88,7 +95,7 @@ public class Purchase {
   /**
    * @param dateOfPurchase new value of {@link #getDateOfPurchase}.
    */
-  public void setDateOfPurchase(Date dateOfPurchase) {
+  public void setDateOfPurchase(Timestamp dateOfPurchase) {
 
     this.dateOfPurchase = dateOfPurchase;
   }

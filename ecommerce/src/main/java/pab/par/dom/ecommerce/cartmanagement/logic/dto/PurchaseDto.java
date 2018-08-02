@@ -1,6 +1,6 @@
 package pab.par.dom.ecommerce.cartmanagement.logic.dto;
 
-import java.sql.Date;
+import java.sql.Timestamp;
 
 /**
  * Data Transfer Object for Purchase entity
@@ -14,7 +14,7 @@ public class PurchaseDto {
 
   private int amount;
 
-  private Date dateOfPurchase;
+  private Timestamp dateOfPurchase;
 
   private String userName;
 
@@ -69,7 +69,7 @@ public class PurchaseDto {
   /**
    * @return dateOfPurchase
    */
-  public Date getDateOfPurchase() {
+  public Timestamp getDateOfPurchase() {
 
     return this.dateOfPurchase;
   }
@@ -77,7 +77,7 @@ public class PurchaseDto {
   /**
    * @param dateOfPurchase new value of {@link #getDateOfPurchase}.
    */
-  public void setDateOfPurchase(Date dateOfPurchase) {
+  public void setDateOfPurchase(Timestamp dateOfPurchase) {
 
     this.dateOfPurchase = dateOfPurchase;
   }

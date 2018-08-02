@@ -11,4 +11,6 @@ import pab.par.dom.ecommerce.cartmanagement.logic.dto.PurchaseDto;
 public interface Cartmanagement {
 
   List<PurchaseDto> buy(List<PurchaseDto> purchases);
+
+  List<PurchaseDto> getPurchases();
 }

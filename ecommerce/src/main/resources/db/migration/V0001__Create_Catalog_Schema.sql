@@ -11,11 +11,12 @@ INSERT INTO Article (id, brand, model, description, price) VALUES (2, 'Huawei', 
 INSERT INTO Article (id, brand, model, description, price) VALUES (3, 'Samsung', 'Galaxy J5', 'Smartphone 5.2", 2xSIM, 4G, 16GB, 1280 x 720 Px, SAMOLED, 16 Million Colours, 16:9', 153.90);
 INSERT INTO Article (id, brand, model, description, price) VALUES (4, 'Motorola', 'Moto G6', 'Smartphone Android 5.7", 4G, 12MP camera, 4GB RAM, 64GB, Dual Sim', 269.00);
 
+CREATE SEQUENCE public.SEQ_PURCHASE START 1;
 
 CREATE TABLE Purchase (
-  id BIGINT PRIMARY KEY,
+  id BIGINT DEFAULT nextval('SEQ_PURCHASE') NOT NULL PRIMARY KEY,
   article_id BIGINT NOT NULL,
-  amount INTEGER DEFAULT 1,
-  date_of_purchase timestamp,
+  amount INTEGER NOT NULL,
+  date_of_purchase timestamp NOT NULL,
   user_name VARCHAR (100) NOT NULL
 );

@@ -1,5 +1,7 @@
 package pab.par.dom.ecommerce.cartmanagement.logic.impl;
 
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -30,7 +32,14 @@ public class CartmanagementImpl implements Cartmanagement {
   @Override
   public List<PurchaseDto> buy(List<PurchaseDto> purchases) {
 
+    purchases.forEach(p -> p.setDateOfPurchase(new Timestamp(new Date().getTime())));
     return this.purchaseMapper.toDtos(this.purchaseRepository.saveAll(this.purchaseMapper.toEntities(purchases)));
+  }
+
+  @Override
+  public List<PurchaseDto> getPurchases() {
+
+    return this.purchaseMapper.toDtos(this.purchaseRepository.findAll());
   }
 
 }

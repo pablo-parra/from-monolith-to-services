@@ -40,12 +40,21 @@ public class EcommerceController {
 
   /**
    * Saves a list of articles
-   * 
+   *
    * @return the list of all articles of the catalog
    */
-  @RequestMapping(value = "/getCatalog", method = RequestMethod.GET)
+  @RequestMapping(value = "/buy", method = RequestMethod.POST)
   public @ResponseBody ResponseEntity<?> buy(@RequestBody List<PurchaseDto> purchases) {
 
     return new ResponseEntity<>(this.cartmanagement.buy(purchases), HttpStatus.OK);
+  }
+
+  /**
+   * @return the list of all articles of the catalog
+   */
+  @RequestMapping(value = "/getPurchases", method = RequestMethod.GET)
+  public @ResponseBody ResponseEntity<?> getPurchases() {
+
+    return new ResponseEntity<>(this.cartmanagement.getPurchases(), HttpStatus.OK);
   }
 }
