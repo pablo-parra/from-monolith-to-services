@@ -39,6 +39,15 @@ First instance:
 Second instance:
 `from-monolith-to-services\cart\target>java -jar -Dserver.port=9005 cart-bootified.jar`
 
+#### Running several instances with communication through Apache
+In this case we want to use the getPurchasesWithArticleInfo service through apache we need also to provide the url for the catalog
+
+First instance:
+`from-monolith-to-services\cart\target>java -jar -Dserver.port=9004 -Dcatalog.url=http://localhost:8888/ecommerce/catalog cart-bootified.jar`
+
+Second instance:
+`from-monolith-to-services\cart\target>java -jar -Dserver.port=9005 -Dcatalog.url=http://localhost:8888/ecommerce/catalog cart-bootified.jar`
+
 #### Apache server Load Balancer config
 For the example I have setted two instances of the cart service, that are configured in the Apache server as follows
 
@@ -59,8 +68,10 @@ ProxyPassReverse /ecommerce/catalog http://localhost:9003/catalog/api/v1/
 Assuming that our Apache instance runs in the port 8888 the following services would be available through the Load Balancer / Reverse Proxy:
 
 * get catalog: http://localhost:8888/ecommerce/catalog/get
+* get article: http://localhost:8888/ecommerce/catalog/article/{id_of_the_article}
 * buy (persist a purchase): http://localhost:8888/ecommerce/cart/buy
 * get purchases: http://localhost:8888/ecommerce/cart/getPurchases
+* get purchases with article info (the cart service needs to communicate with the catalog service): http://localhost:8888/ecommerce/cart/getPurchasesWithArticleInfo
 
 The operations related to the cart service will be balanced by Apache between the 9004 and 9005 instances.
 

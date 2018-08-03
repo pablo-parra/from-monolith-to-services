@@ -38,7 +38,7 @@ public class Purchase {
   private String userName;
 
   @Transient
-  private String origin;
+  private String instance;
 
   /**
    * @return id
@@ -121,19 +121,19 @@ public class Purchase {
   }
 
   /**
-   * @return origin
+   * @return instance
    */
-  public String getOrigin() {
+  public String getInstance() {
 
-    return this.origin;
+    return this.instance;
   }
 
   /**
-   * @param origin new value of {@link #getOrigin}.
+   * @param instance new value of {@link #getInstance}.
    */
-  public void setOrigin(String origin) {
+  public void setInstance(String instance) {
 
-    this.origin = origin;
+    this.instance = instance;
   }
 
 }

@@ -50,11 +50,20 @@ public class EcommerceController {
   }
 
   /**
-   * @return the list of all articles of the catalog
+   * @return the list of all purchases
    */
   @RequestMapping(value = "/cart/getPurchases", method = RequestMethod.GET)
   public @ResponseBody ResponseEntity<?> getPurchases() {
 
     return new ResponseEntity<>(this.cartmanagement.getPurchases(), HttpStatus.OK);
+  }
+
+  /**
+   * @return the list of all purchases including the article info
+   */
+  @RequestMapping(value = "/cart/getPurchasesWithArticleInfo", method = RequestMethod.GET)
+  public @ResponseBody ResponseEntity<?> getPurchasesWithArticlesInfo() {
+
+    return new ResponseEntity<>(this.cartmanagement.getPurchasesWithArticle(), HttpStatus.OK);
   }
 }

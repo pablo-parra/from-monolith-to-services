@@ -12,4 +12,6 @@ public interface Catalogmanagement {
 
   List<ArticleDto> getCatalog();
 
+  ArticleDto getArticle(Long id);
+
 }

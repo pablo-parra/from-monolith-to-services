@@ -1,6 +1,7 @@
 package pab.par.dom.ecommerce.catalogmanagement.logic.impl;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -8,6 +9,7 @@ import javax.inject.Named;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
+import pab.par.dom.ecommerce.catalogmanagement.dataaccess.entity.Article;
 import pab.par.dom.ecommerce.catalogmanagement.dataaccess.repository.ArticleRepository;
 import pab.par.dom.ecommerce.catalogmanagement.logic.api.Catalogmanagement;
 import pab.par.dom.ecommerce.catalogmanagement.logic.dto.ArticleDto;
@@ -32,6 +34,17 @@ public class CatalogmanagementImpl implements Catalogmanagement {
 
     return this.articleMapper.toDtos(this.articleRepository.findAll());
 
+  }
+
+  @Override
+  public ArticleDto getArticle(Long id) {
+
+    ArticleDto articleDto = new ArticleDto();
+    Optional<Article> article = this.articleRepository.findById(id);
+    if (article.isPresent()) {
+      articleDto = this.articleMapper.toDto(article.get());
+    }
+    return articleDto;
   }
 
 }
